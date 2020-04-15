@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="SQC.Views.UserPlantUnitPage"
+             Title="即時樣品查詢"
+             x:Name="ThisPage">
+
+    <Grid>
+        <ScrollView
+            Orientation="Vertical">
+            <StackLayout
+                BindableLayout.ItemsSource="{Binding UserPlantUnit.data}"
+                Orientation="Vertical">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout
+                            Orientation="Vertical">
+                            <Grid 
+                                BackgroundColor="Gray">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.PlantNameCommand,
+                                        Source={Reference ThisPage}}"
+                                        CommandParameter="{Binding}"/>
+                                    
+                                </Grid.GestureRecognizers>
+                                <Label
+                                   Text="{Binding CHINESE_PLANT_NAME}"
+                                   FontSize="24" TextColor="White"
+                                   HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Label
+                                    Text="{Binding ExpandLabel}"
+                                    FontSize="24" TextColor="White"
+                                    HorizontalOptions="End" VerticalOptions="Center"/>
+                            </Grid>
+                            <StackLayout
+                                BindableLayout.ItemsSource="{Binding PLANT_UNITS}"
+                                IsVisible="{Binding IsExpand}"
+                                Orientation="Vertical">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding BindingContext.PlantUnitsCommand,
+                                                    Source={Reference ThisPage}}"
+                                                    CommandParameter="{Binding}"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <Label 
+                                                Text="{Binding PLANT_UNIT}"
+                                                FontSize="18" Margin="15,0,0,0"/>
+
+                                            <Label 
+                                                Text="-"
+                                                FontSize="18" Margin="0,0,0,0"/>
+                                            <Label 
+                                                Text="{Binding CHINESE_UNIT_NAME}"
+                                                FontSize="18" Margin="0,0,0,0"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+    

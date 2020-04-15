@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="SQC.Views.PlantUnitSamplePage"
+             Title="{Binding PageName}"
+             x:Name="ThisPage">
+
+    <Grid>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Orientation="Vertical"
+                         BindableLayout.ItemsSource="{Binding PlantUnitSample.data}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding BindingContext.PlantUnitSampleDatumCommand,
+                                    Source={Reference ThisPage}}"
+                                    CommandParameter="{Binding}"/>
+                            </Grid.GestureRecognizers>
+                            <Label
+                                Grid.Row="0" Grid.Column="0"
+                                Text="{Binding SAMPLING_POINT}"
+                                FontSize="16"/>
+                            <Label
+                                Grid.Row="1" Grid.Column="0"
+                                Text="{Binding SAMPLE_NAME}"
+                                FontSize="16"/>
+                            <Label
+                                Grid.Row="0" Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Text="{Binding SAMPLED_DATE}"
+                                FontSize="16"/>
+                            <Label
+                                Grid.Row="1" Grid.Column="1"
+                                Text="例行"
+                                FontSize="16" TextColor="Orange"/>
+                            <Label
+                                Grid.Row="1" Grid.Column="2"
+                                Text="分析"
+                                FontSize="16" TextColor="Pink"/>
+                            <BoxView 
+                                Grid.Row="1" Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                               Color="Gray"
+                                HeightRequest="1" 
+                                HorizontalOptions="Fill" VerticalOptions="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="SQC.Views.SampleResultPage"
+             Title="{Binding PageName}"
+             x:Name="ThisPage">
+
+    <Grid>
+        <ScrollView Orientation="Vertical">
+            <StackLayout Orientation="Vertical">
+                <Grid
+                    Margin="10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0" Grid.Column="0"
+                        FontSize="18"
+                        Text="委託單位"/>
+                    <Label
+                        Grid.Row="0" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.CHINESE_UNIT_NAME}"/>
+                    <Label
+                        Grid.Row="1" Grid.Column="0"
+                        FontSize="18"
+                        Text="製成單位"/>
+                    <Label
+                        Grid.Row="1" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.PLANT_UNIT}"/>
+                    <Label
+                        Grid.Row="2" Grid.Column="0"
+                        FontSize="18"
+                        Text="取樣點編號"/>
+                    <Label
+                        Grid.Row="2" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.SAMPLING_POINT}"/>
+                    <Label
+                        Grid.Row="3" Grid.Column="0"
+                        FontSize="18"
+                        Text="樣品內容"/>
+                    <Label
+                        Grid.Row="3" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.SAMPLE_NAME}"/>
+                    <Label
+                        Grid.Row="4" Grid.Column="0"
+                        FontSize="18"
+                        Text="樣品編號"/>
+                    <Label
+                        Grid.Row="4" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.ID_NUMERIC}"/>
+                    <Label
+                        Grid.Row="5" Grid.Column="0"
+                        FontSize="18"
+                        Text="取樣時間"/>
+                    <Label
+                        Grid.Row="5" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.SAMPLED_DATE}"/>
+                    <Label
+                        Grid.Row="6" Grid.Column="0"
+                        FontSize="18"
+                        Text="檢驗完成時間"/>
+                    <Label
+                        Grid.Row="6" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.DATE_COMPLETED}"/>
+                    <Label
+                        Grid.Row="7" Grid.Column="0"
+                        FontSize="18"
+                        Text="成品批號/槽車車號"/>
+                    <Label
+                        Grid.Row="7" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.LOT_NO}"/>
+                    <Label
+                        Grid.Row="8" Grid.Column="0"
+                        FontSize="18"
+                        Text="備註"/>
+                    <Label
+                        Grid.Row="8" Grid.Column="1"
+                        HorizontalOptions="End"
+                        FontSize="18"
+                        Text="{Binding SampleResult.data.DESCRIPTION}"/>
+
+                </Grid>
+                <StackLayout Orientation="Vertical"
+                             BindableLayout.ItemsSource="{Binding SampleResult.data.SAMPLE_RESULTS}"
+                             >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Row="0" Grid.Column="1"
+                                    Text="{Binding COMPONENT_NAME}"/>
+                                <Label
+                                    Grid.Row="1" Grid.Column="1"
+                                    Text="{Binding DESCRIPTION}"/>
+                                <Label
+                                    Grid.Row="2" Grid.Column="1"
+                                    Text="{Binding ANALYSIS, StringFormat='[{0}]'}"/>
+                                <Label
+                                    Grid.Row="0" Grid.Column="2"
+                                    TextColor="Cyan"
+                                    Text="{Binding UNITS}"/>
+                                <Label
+                                    Grid.Row="1" Grid.Column="2"
+                                    TextColor="Brown"
+                                    Text="{Binding UNITS}"/>
+                                <BoxView
+                                    Grid.Row="0" Grid.Column="0"
+                                    Grid.RowSpan="3"
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    Color="LightPink"
+                                    WidthRequest="30" HeightRequest="30"/>
+                                <Label
+                                    Grid.Row="0" Grid.Column="0"
+                                    Grid.RowSpan="3"
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    TextColor="Brown"
+                                    Text="{Binding ID}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+  
+</ContentPage>
