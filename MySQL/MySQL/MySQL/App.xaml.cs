@@ -37,6 +37,7 @@ namespace MySQL
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<UserPlantUnitPage, UserPlantUnitPageViewModel>();
+            containerRegistry.RegisterForNavigation<PlantUnitSamplePage, PlantUnitSamplePageViewModel>();
         }
 
         private void ConfigAutoMapper(IContainerRegistry containerRegistry)
