@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SQCLibrary\SQCLibrary.csproj">
+      <Project>{110cd0fd-a49c-4467-8a28-a6eae9e2c683}</Project>
+      <Name>SQCLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
