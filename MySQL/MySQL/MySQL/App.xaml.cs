@@ -50,8 +50,8 @@ namespace MySQL
                 //cfg.CreateMap<SampleResultDto, SampleResult>();
                 //cfg.CreateMap<SampleResultDtoData, SampleResultData>();
                 //cfg.CreateMap<SAMPLERESULTDto, SAMPLERESULT>();
-                //cfg.CreateMap<PlantUnitSampleDto, PlantUnitSample>();
-                //cfg.CreateMap<PlantUnitSampleDtoDatum, PlantUnitSampleDatum>();
+                cfg.CreateMap<PlantUnitSampleDto, PlantUnitSample>();
+                cfg.CreateMap<PlantUnitSampleDtoDatum, PlantUnitSampleDatum>();
             });
 
             IMapper mapper = config.CreateMapper();

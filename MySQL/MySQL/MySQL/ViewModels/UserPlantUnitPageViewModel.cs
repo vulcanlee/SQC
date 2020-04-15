@@ -39,7 +39,6 @@ namespace MySQL.ViewModels
             para.Add(nameof(UserPlantUnitDatum), item);
             navigationService.NavigateAsync("PlantUnitSamplePage", para);
         }
-
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
         }

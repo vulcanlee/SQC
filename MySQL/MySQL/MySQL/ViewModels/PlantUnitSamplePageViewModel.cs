@@ -38,7 +38,7 @@ namespace MySQL.ViewModels
         {
             string plant = "";
             string plantunit = "";
-            PLANTUNIT PLANTUNIT = parameters.GetValues<PLANTUNIT>(nameof(PLANTUNIT)) as PLANTUNIT;
+            PLANTUNIT PLANTUNIT = parameters[nameof(PLANTUNIT)] as PLANTUNIT;
             plantunit = PLANTUNIT.PLANT_UNIT;
             UserPlantUnitDatum userPlantUnitDatum = parameters.GetValue<UserPlantUnitDatum>(nameof(UserPlantUnitDatum)) as UserPlantUnitDatum;
             plant = userPlantUnitDatum.PLANT;
@@ -47,7 +47,9 @@ namespace MySQL.ViewModels
             var foo = await service.PostAsync(ConstantsHelper.Token, ConstantsHelper.AppVersion, 
                 plant, plantunit);
             PlantUnitSample = mapper.Map<PlantUnitSample>(foo);
+            PageName = PLANTUNIT.CHINESE_UNIT_NAME;
         }
+        public string PageName { get; set; }
 
         public void OnNavigatingTo(INavigationParameters parameters)
         {
