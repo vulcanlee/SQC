@@ -21,8 +21,8 @@ namespace SQCLibrary.Services
             {
                 {nameof(accessToken), accessToken },
                 {nameof(appVersion), appVersion },
-                {nameof(appVersion), plant },
-                {nameof(appVersion), plantUnit },
+                {nameof(plant), plant },
+                {nameof(plantUnit), plantUnit },
             };
             FormUrlEncodedContent formData = new FormUrlEncodedContent(formDataDictionary);
             var response = await client.PostAsync("api/LIMS/plantUnitSample", formData);

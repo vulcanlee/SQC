@@ -12,8 +12,11 @@ namespace SQCConsole
     {
         static async Task Main(string[] args)
         {
-            UserPlantUnitService service = new UserPlantUnitService();
-            await service.GetAsync(ConstantsHelper.Token, ConstantsHelper.AppVersion);
+            //UserPlantUnitService service = new UserPlantUnitService();
+            //await service.GetAsync(ConstantsHelper.Token, ConstantsHelper.AppVersion);
+            PlantUnitSampleService service = new PlantUnitSampleService();
+            var result = await service.PostAsync(ConstantsHelper.Token, ConstantsHelper.AppVersion,
+                "CFP", "CFP-SEMI");
         }
     }
 }
