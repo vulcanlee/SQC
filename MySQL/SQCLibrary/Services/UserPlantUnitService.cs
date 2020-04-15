@@ -1,4 +1,5 @@
-﻿using SQCLibrary.Dots;
+﻿using Newtonsoft.Json;
+using SQCLibrary.Dots;
 using SQCLibrary.Helpers;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace SQCLibrary.Services
 {
     public class UserPlantUnitService
     {
-        public async Task<UserPlantUnitDto> Get(string accessToken, string appVersion)
+        public async Task<UserPlantUnitDto> GetAsync(string accessToken, string appVersion)
         {
             UserPlantUnitDto result = new UserPlantUnitDto();
 
@@ -26,7 +27,7 @@ namespace SQCLibrary.Services
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-
+                result = JsonConvert.DeserializeObject<UserPlantUnitDto>(content);
             }
 
             return result;

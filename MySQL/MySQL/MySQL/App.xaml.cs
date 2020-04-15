@@ -4,6 +4,10 @@ using MySQL.ViewModels;
 using MySQL.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System;
+using AutoMapper;
+using SQCLibrary.Dots;
+using MySQL.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MySQL
@@ -28,8 +32,29 @@ namespace MySQL
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            ConfigAutoMapper(containerRegistry);
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<UserPlantUnitPage, UserPlantUnitPageViewModel>();
+        }
+
+        private void ConfigAutoMapper(IContainerRegistry containerRegistry)
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<UserPlantUnitDto, UserPlantUnit>();
+                cfg.CreateMap<UserPlantUnitDtoDatum, UserPlantUnitDatum>();
+                cfg.CreateMap<PLANTUNITDto, PLANTUNIT>();
+                //cfg.CreateMap<SampleResultDto, SampleResult>();
+                //cfg.CreateMap<SampleResultDtoData, SampleResultData>();
+                //cfg.CreateMap<SAMPLERESULTDto, SAMPLERESULT>();
+                //cfg.CreateMap<PlantUnitSampleDto, PlantUnitSample>();
+                //cfg.CreateMap<PlantUnitSampleDtoDatum, PlantUnitSampleDatum>();
+            });
+
+            IMapper mapper = config.CreateMapper();
+            containerRegistry.RegisterInstance<IMapper>(mapper);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SQCConsole
         static async Task Main(string[] args)
         {
             UserPlantUnitService service = new UserPlantUnitService();
-            await service.Get(ConstantsHelper.Token, ConstantsHelper.AppVersion);
+            await service.GetAsync(ConstantsHelper.Token, ConstantsHelper.AppVersion);
         }
     }
 }
