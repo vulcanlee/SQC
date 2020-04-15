@@ -21,13 +21,21 @@ namespace MySQL.ViewModels
 
         private readonly INavigationService navigationService;
         private readonly IMapper mapper;
-
+        public DelegateCommand<PLANTUNIT> PlantUnitsCommand { get; set; }
         public UserPlantUnit UserPlantUnit { get; set; }
         public UserPlantUnitPageViewModel(INavigationService navigationService,
             IMapper mapper)
         {
             this.navigationService = navigationService;
             this.mapper = mapper;
+            PlantUnitsCommand = new DelegateCommand<PLANTUNIT>(OnPlantUnitsCommand);
+        }
+
+        private void OnPlantUnitsCommand(PLANTUNIT pLANTUNIT)
+        {
+            NavigationParameters para = new NavigationParameters();
+            para.Add(nameof(PLANTUNIT), pLANTUNIT);
+            navigationService.NavigateAsync("PlantUnitSamplePage", para);
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
