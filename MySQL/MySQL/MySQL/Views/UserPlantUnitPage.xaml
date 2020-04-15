@@ -4,7 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MySQL.Views.UserPlantUnitPage"
-             Title="以廠顯示檢驗數據">
+             Title="以廠顯示檢驗數據"
+             x:Name="ThisPage">
 
     <Grid>
         <ScrollView Orientation="Vertical">
@@ -28,6 +29,13 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding BindingContext.PlantUnitsCommand,
+                                                    Source={Reference ThisPage}}"
+                                                    CommandParameter="{Binding}"/>
+
+                                            </StackLayout.GestureRecognizers>
                                             <Label Text="{Binding PLANT_UNIT}"
                                                    FontSize="16"/>
                                             <Label Text="-"/>
