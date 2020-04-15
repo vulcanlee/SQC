@@ -5,5 +5,24 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MySQL.Views.UserPlantUnitPage"
              Title="以廠顯示檢驗數據">
-  
+
+    <Grid>
+        <ScrollView Orientation="Vertical">
+            <StackLayout
+                BindableLayout.ItemsSource="{Binding UserPlantUnit.data}"
+                Orientation="Vertical">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            HeightRequest="50">
+                            <BoxView Color="Gray"/>
+                            <Label Text="{Binding CHINESE_PLANT_NAME}"
+                               HorizontalOptions="Start" VerticalOptions="Center"
+                               FontSize="24" TextColor="White"/>                            
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
