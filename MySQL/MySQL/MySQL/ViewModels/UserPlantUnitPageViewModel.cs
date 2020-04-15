@@ -35,6 +35,8 @@ namespace MySQL.ViewModels
         {
             NavigationParameters para = new NavigationParameters();
             para.Add(nameof(PLANTUNIT), pLANTUNIT);
+            var item = UserPlantUnit.data.FirstOrDefault(x => x.PLANT_UNITS.Contains(pLANTUNIT));
+            para.Add(nameof(UserPlantUnitDatum), item);
             navigationService.NavigateAsync("PlantUnitSamplePage", para);
         }
 
